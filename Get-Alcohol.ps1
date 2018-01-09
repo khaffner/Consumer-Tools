@@ -39,7 +39,6 @@
                 $Product.Category          = $Entry.Varetype
                 $Product.Container         = $Entry.Emballasjetype
                 $Product.AlcoholPercentage = $Entry.Alkohol.TrimEnd('%').Replace(',','.')
-                #$ProductArray += $Product
                 Write-Output $Product
             }
             Write-Progress -Activity 'Working..' -Completed  
@@ -61,13 +60,11 @@
                 $Product.Category          = $Entry.Varugrupp
                 $Product.Container         = $Entry.Forpackning
                 $Product.AlcoholPercentage = $Entry.Alkoholhalt.TrimEnd('%')
-                #$ProductArray += $ProductProps
                 Write-Output $Product
             }
             Write-Progress -Activity 'Working..' -Completed
         }
     }
     End {
-        #Write-Output $ProductArray
     }
 }

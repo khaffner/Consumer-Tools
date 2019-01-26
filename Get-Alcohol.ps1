@@ -18,6 +18,7 @@
             [string]$Category
             [string]$Container
             [float]$AlcoholPercentage
+            [float]$PricePerAlcohol
         }
     }
     Process {
@@ -36,6 +37,7 @@
                 $Product.Category = $Entry.Varetype
                 $Product.Container = $Entry.Emballasjetype
                 $Product.AlcoholPercentage = $Entry.Alkohol.Replace(',', '.')
+                $Product.PricePerAlcohol = $Product.Price/($Product.Volume*1000*($Product.AlcoholPercentage/100))
                 Write-Output $Product
             }
         }
@@ -55,6 +57,7 @@
                 $Product.Category = $Entry.Varugrupp
                 $Product.Container = $Entry.Forpackning
                 $Product.AlcoholPercentage = $Entry.Alkoholhalt.TrimEnd('%')
+                $Product.PricePerAlcohol = $Product.Price/($Product.Volume*1000*($Product.AlcoholPercentage/100))
                 Write-Output $Product
             }
         }
